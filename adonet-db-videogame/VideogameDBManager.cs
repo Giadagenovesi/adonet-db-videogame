@@ -47,7 +47,9 @@ namespace adonet_db_videogame
             }
 
         }
-        
+
+
+        //INSERISCO NUOVO VIDEOGIOCO NELLA TABELLA VIDEEOGIOCHI
         public static bool InsertVideogame(Videogame videogameToAdd)
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -83,6 +85,46 @@ namespace adonet_db_videogame
 
                 }
             }
-        
+
+
+        //STAMPO IL VIDEOGIOCO CHE CORRISPONDE AD UN DETERMINATO ID
+        public static void GetIdVideogame(long id)
+        {
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    connection.Open();
+
+                    string query = "SELECT * FROM videogames WHERE id = @Id;";
+
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@Id", id ));
+                        using (SqlDataReader data = cmd.ExecuteReader())
+                        {
+                            while (data.Read())
+                            {
+                                Console.WriteLine($"The Videogame name is: {data["name"]}");
+                                
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                
+
+            }
+
+        }
+
     }
 }

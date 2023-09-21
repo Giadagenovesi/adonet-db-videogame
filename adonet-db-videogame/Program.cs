@@ -64,6 +64,15 @@
                         }
 
                         break;
+                    case 3:
+
+
+                        Console.Write("Insert a Videogame ID: ");
+                        long videogameId = long.Parse(Console.ReadLine());
+
+                        VideogameDBManager.GetIdVideogame(videogameId);
+                        Console.WriteLine();
+                        break;
 
                 }
 
