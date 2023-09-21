@@ -74,6 +74,23 @@
                         Console.WriteLine();
                         break;
 
+                    case 5:
+                        Console.Write("Insert Videogame ID to delete: ");
+                        long videogameIdToDelete = long.Parse(Console.ReadLine());
+
+                        bool deleted = VideogameDBManager.DeleteVideogame(videogameIdToDelete);
+
+                        if (deleted)
+                        {
+                            Console.WriteLine("Videogame successfully deleted!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("OOPS something went wrong!");
+                        }
+
+                        break;
+
                 }
 
             }
